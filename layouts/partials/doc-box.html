@@ -1,0 +1,66 @@
+<style>
+  #sa-iframe-legals {
+    --link-color: blue;
+    --link-visited: purple;
+    --color: 198, 228, 255;
+    --alpha: 0.4;
+    --padding: 1rem;
+    --neg-padding: calc(var(--padding) * -1);
+  }
+
+  #sa-iframe-legals a:hover,
+  #sa-iframe-legals a:active {
+    color: var(--link-color);
+    background-color: whitesmoke;
+  }
+
+  #sa-iframe-legals a:visited {
+    color: var(--link-visited);
+  }
+
+  #sa-iframe-legals  dl {
+      border-radius: 5px;
+      overflow: hidden;
+      background-color: rgba(var(--color), var(--alpha));
+      padding: var(--padding);
+  }
+  #sa-iframe-legals dt {
+    background-color: rgba(var(--color), var(--alpha));
+    padding: var(--padding);
+    margin-left: var(--neg-padding);
+    margin-top: var(--neg-padding);
+    margin-right: var(--neg-padding);
+    margin-bottom: var(--padding);
+    border-bottom: 1px solid rgb(var(--color));
+  }
+
+  #sa-iframe-legals dd {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  #sa-iframe-legals  h1 { font-size: 2rem; margin: 3rem 0 1rem; }
+  #sa-iframe-legals  h2 { font-size: 1.25rem; margin: 3rem 0 1rem; }
+  #sa-iframe-legals  h3 { font-size: 1.2rem; margin: 1.5rem 0 .5rem; }
+  #sa-iframe-legals  h4 { font-size: 1rem; margin: 1.5rem 0 .5rem; }
+  #sa-iframe-legals  p { line-height: 1.55rem; }
+</style>
+
+<script type="text/javascript">
+  const getContent = async () => {
+    const paramsLink = {{ .params.link }}
+    try {
+      const url = new URL(paramsLink)
+      const response = await fetch(url.href)
+      document.getElementById('sa-iframe-legals').innerHTML = await response.text()
+    } catch (error) {
+      console.error(error)
+      document.getElementById('sa-iframe-legals').innerHTML = 'An error occurred fetching the content, please refresh and try again.'
+    }
+  }
+  setTimeout(async () => {
+    getContent()
+  }, 1000);
+</script>
+
+<div id="sa-iframe-legals">Fetching content...</div>

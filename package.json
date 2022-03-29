@@ -1,0 +1,7 @@
+{
+  "name": "hugo-docs-requester",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "hugo server --watch --baseURL=http://localhost:8081 --port=8081 --bind=0.0.0.0"
+  }
+}

@@ -1,0 +1,5 @@
+baseURL = 'https://altescape.github.io/hugo-docs-server/'
+languageCode = 'en-gb'
+title = 'Hugo Docs Requester'
+disableKinds = ["taxonomy", "term", "sitemap", "RSS"]
+disableSitemap = true # using until disableKinds works
